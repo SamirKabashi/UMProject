@@ -20,12 +20,12 @@ app.renderer.view.style.position = 'absolute';
 
 document.body.appendChild(app.view);
 
-// const Graphics = PIXI.Graphics;
+const Graphics = PIXI.Graphics;
 
-// const rectangle = new Graphics();
+const rectangle = new Graphics();
 // rectangle.beginFill(0xAA33BB)
 // .lineStyle(4, 0xFFEA00, 1) // ngjyra rreth boxit
-// .drawRect(200, 200, 100, 100) // ketu eshte largesia e (x, y)
+// .drawRect(200, 100) // ketu eshte largesia e (x, y)
 // .endFill();
 
 // app.stage.addChild(rectangle);
@@ -62,29 +62,33 @@ document.body.appendChild(app.view);
 
 // app.stage.addChild(torus);
 
-// const star = new Graphics();
-// star.beginFill(0xADADAD)
-// .drawStar(900, 700, 300, 80)
-// .endFill();
+const star = new Graphics();
+star.beginFill(0xDbAFAD)
+.drawStar(1200, 100, 300, 80)
+.endFill();
 
-// app.stage.addChild(star);
+app.stage.addChild(star);
 
-// const style = new PIXI.TextStyle({
-//     fontFamily: 'Montserrat',
-//     fontSize: 48,
-//     fill: 'deepskyblue',
-//     stroke: '#fffffff',
-//     strokeThickness: 4,
-//     dropShadowColor: '#000000'
-// });
+const style = new PIXI.TextStyle({
+    fontFamily: 'Montserrat',
+    fontSize: 58,
+    fill: 'deepskyblue',
+    stroke: '#fffffff',
+    strokeThickness: 4,
+    dropShadowColor: '#000000'
+});
 
-// const myText = new PIXI.Text('Hello World', style);
-// app.stage.addChild(myText);
+// const myText = new PIXI.Text('Hello this is my project', style);
+
 
 // myText.text = 'Text Changed!';
 // myText.style.wordWrap = true;
-// myText.style.wordWrapWidth = 100;
+// myText.style.fontSize = 80;
+// myText.style.wordWrapWidth = 1000;
 // myText.style.align = 'center';
+// app.stage.addChild(myText);
+
+
 
 // app.ticker.add(delta => loop(delta));
 
@@ -99,7 +103,7 @@ document.body.appendChild(app.view);
 // const char1Texture = PIXI.Texture.from('./images/sasuke.png');
 // const char1Sprite = new PIXI.Sprite(char1Texture);
 
-// const char1Sprite = PIXI.Sprite.from('./images/sasuke.png');
+// const char1Sprite = PIXI.Sprite.from('./images/lion.png');
 // app.stage.addChild(char1Sprite);
 
 // char1Sprite.width = 500;
@@ -123,7 +127,7 @@ document.body.appendChild(app.view);
 // char1Sprite.position.set(800, 400);
 
 // app.ticker.add(delta => loop(delta));
-// char1Sprite.rotation = 1;
+// char1Sprite.rotation = 1; // qekjo e rrutullon luanin per ni pjes te caktune me NR
 // function loop(delta){
 //     char1Sprite.rotation += 0.01;
 // }
@@ -138,7 +142,7 @@ document.body.appendChild(app.view);
 // app.ticker.add(delta => loop(delta));
 // char1Sprite.anchor.set(0.5, 0.5);
 // function loop(delta){
-//     // char1Sprite.rotation += 0.01;
+//     // char1Sprite.rotation += 0.01; //qekjo e bon mu rrutullu vete 
 // }
 
 // char1Sprite.interactive = true;
@@ -320,7 +324,4 @@ const sound = new Howl({
     src: ['./sound/pelimusaa.wav']
 });
 
-// sound.play();
-
-
-
+sound.play();
