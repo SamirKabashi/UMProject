@@ -1,3 +1,5 @@
+// const { Howl } = require("howler");
+
 const Application = PIXI.Application;
 
 const app = new Application({
@@ -248,23 +250,77 @@ const loader = PIXI.Loader.shared;
 // }
 
 
-loader.add('tileset', './images/tileset.png')
+// loader.add('tileset', './images/tileset.png')
+// //.add('char5Texture', './images/char5.png')
+// .load(setup);
+
+// function setup(loader, resources) {
+//     const texture1 = resources.tileset.texture;
+//     const rect1 = new PIXI.Rectangle(176, 160, 76, 86); // mbrenda nje foto te madhe mundesh qe ka shume foto me e gjete dhe shfaq vetem nje foto 
+//     texture1.frame = rect1;
+//     const spr1 = new PIXI.Sprite(texture1);
+//     spr1.scale.set(2, 2);
+//     app.stage.addChild(spr1);
+
+//     const texture2 = new PIXI.Texture(resources.tileset.texture);
+//     const rect2 = new PIXI.Rectangle(190, 593, 77, 84); // mbrenda nje foto te madhe mundesh qe ka shume foto me e gjete dhe shfaq vetem nje foto 
+//     texture2.frame = rect2;
+//     const spr2 = new PIXI.Sprite(texture2);
+//     spr2.scale.set(2, 2);
+//     spr2.position.set(200, 200);
+//     app.stage.addChild(spr2);
+// }
+
+// loader.add('tileset', './images/drags.json')
+// //.add('char5Texture', './images/char5.png')
+// .load(setup);
+
+// function setup(loader, resources) {
+//     const drag11Texture = PIXI.Texture.from('drag11.png');
+//     const drag11Sprite = new PIXI.Sprite(drag11Texture);
+//     drag11Sprite.position.set(800, 300);
+//     drag11Sprite.scale.set(2, 2);
+//     app.stage.addChild(drag11Sprite);
+
+// }
+
+loader.add('tileset', './images/drags.json')
 //.add('char5Texture', './images/char5.png')
 .load(setup);
 
 function setup(loader, resources) {
-    const texture1 = resources.tileset.texture;
-    const rect1 = new PIXI.Rectangle(176, 160, 76, 86); // mbrenda nje foto te madhe mundesh qe ka shume foto me e gjete dhe shfaq vetem nje foto 
-    texture1.frame = rect1;
-    const spr1 = new PIXI.Sprite(texture1);
-    spr1.scale.set(2, 2);
-    app.stage.addChild(spr1);
-
-    const texture2 = new PIXI.Texture(resources.tileset.texture);
-    const rect2 = new PIXI.Rectangle(190, 593, 77, 84); // mbrenda nje foto te madhe mundesh qe ka shume foto me e gjete dhe shfaq vetem nje foto 
-    texture2.frame = rect2;
-    const spr2 = new PIXI.Sprite(texture2);
-    spr2.scale.set(2, 2);
-    spr2.position.set(200, 200);
-    app.stage.addChild(spr2);
+    const textures = [];
+    for(let i = 1; i<13; i++){
+        const texture = PIXI.Texture.from(`drag${i}.png`);
+        textures.push(texture);
+    }
+    const drag= new PIXI.AnimatedSprite(textures);
+    drag.position.set(670, 270);
+    drag.scale.set(2, 2);
+    app.stage.addChild(drag);
+    drag.play();
+    drag.animationSpeed = 0.08;
 }
+
+const cloudsTexture = PIXI.Texture.from('./images/clouds.png');
+const cloudsSprite = new PIXI.TilingSprite( cloudsTexture,
+    app.screen.width,
+    app.screen.height
+);
+cloudsSprite.tileScale.set(0.27, 0.27);
+
+app.ticker.add(function(){
+    cloudsSprite.tilePosition.x += 1; 
+});
+
+
+app.stage.addChild(cloudsSprite);
+
+const sound = new Howl({
+    src: ['./sound/pelimusaa.wav']
+});
+
+// sound.play();
+
+
+
